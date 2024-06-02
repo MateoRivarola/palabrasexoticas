@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diccionario Ficticio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #fffbf0;
+      font-family: 'Comic Sans MS', sans-serif;
+    }
+    .word-card {
+      background-color: #ffe066;
+      border-radius: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .word-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    .definition {
+      display: none;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.3s, max-height 0.3s;
+    }
+    .word-card.active .definition {
+      display: block;
+      opacity: 1;
+      max-height: 500px; /* Ajustar según sea necesario */
+    }
+  </style>
+</head>
+<body class="p-10">
+
+  <header class="text-center mb-10">
+    <h1 class="text-5xl font-bold text-yellow-600 mb-2">Palabras Exoticas 🤪</h1>
+    <p class="text-xl text-gray-700">Nuevo Vocabulary - Argentina 🇦🇷</p>
+  </header>
+
+  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="word-card p-6 shadow-lg transition-all duration-300">
+      <h2 class="text-3xl text-red-500 font-bold mb-2 cursor-pointer">HANKLA</h2>
+      <p class="definition text-lg text-gray-800">Palabra para alagar o definir algo bueno de alguien/algo. Ej: Sos un hankla!</p>
+    </div>
+    <div class="word-card p-6 shadow-lg transition-all duration-300">
+      <h2 class="text-3xl text-red-500 font-bold mb-2 cursor-pointer">KROPLO</h2>
+      <p class="definition text-lg text-gray-800">Palabra para insultar o maldecir. Ej: Kroplo puto!</p>
+    </div>
+    <div class="word-card p-6 shadow-lg transition-all duration-300">
+      <h2 class="text-3xl text-red-500 font-bold mb-2 cursor-pointer">ECÓCOTRO</h2>
+      <p class="definition text-lg text-gray-800">Adjetivo para maldecir a alguien. Ej: Ezócotro de mierda!!</p>
+    </div>
+    <!-- Añadir más palabras aquí -->
+  </main>
+
+  <footer class="text-center mt-10">
+    <p class="text-gray-600">&copy; 2024 Diccionario Ficticio. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.word-card h2').forEach(word => {
+      word.addEventListener('click', () => {
+        const card = word.parentElement;
+        document.querySelectorAll('.word-card').forEach(c => {
+          if (c !== card) {
+            c.classList.remove('active');
+          }
+        });
+        card.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
